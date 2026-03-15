@@ -13,8 +13,10 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
+	"github.com/nicholas-fedor/watchtower/internal/actions"
 	"github.com/nicholas-fedor/watchtower/pkg/api"
 	metricsAPI "github.com/nicholas-fedor/watchtower/pkg/api/metrics"
+	servicesAPI "github.com/nicholas-fedor/watchtower/pkg/api/services"
 	"github.com/nicholas-fedor/watchtower/pkg/api/update"
 	"github.com/nicholas-fedor/watchtower/pkg/container"
 	"github.com/nicholas-fedor/watchtower/pkg/metrics"
@@ -107,6 +109,56 @@ func SetupAndStartAPI(
 			return metric
 		}, updateLock)
 		httpAPI.RegisterFunc(updateHandler.Path, updateHandler.Handle)
+
+		servicesDeployHandler := servicesAPI.New(func(ctx context.Context, spec types.AppSpec) (*servicesAPI.DeployResult, error) {
+			result, err := actions.DeployServices(ctx, spec)
+			if err != nil {
+				return nil, err
+			}
+
+			return &servicesAPI.DeployResult{
+				Application: result.Application,
+				Services:    result.Services,
+				Created:     result.Created,
+			}, nil
+		})
+		servicesStopHandler := servicesAPI.NewStop(func(ctx context.Context, target types.ServiceTarget) (*servicesAPI.ActionResult, error) {
+			result, err := actions.StopServices(ctx, target)
+			if err != nil {
+				return nil, err
+			}
+
+			return &servicesAPI.ActionResult{Name: result.Name, Service: result.Service, Affected: result.Affected}, nil
+		})
+		servicesStartHandler := servicesAPI.NewStart(func(ctx context.Context, target types.ServiceTarget) (*servicesAPI.ActionResult, error) {
+			result, err := actions.StartServices(ctx, target)
+			if err != nil {
+				return nil, err
+			}
+
+			return &servicesAPI.ActionResult{Name: result.Name, Service: result.Service, Affected: result.Affected}, nil
+		})
+		servicesRestartHandler := servicesAPI.NewRestart(func(ctx context.Context, target types.ServiceTarget) (*servicesAPI.ActionResult, error) {
+			result, err := actions.RestartServices(ctx, target)
+			if err != nil {
+				return nil, err
+			}
+
+			return &servicesAPI.ActionResult{Name: result.Name, Service: result.Service, Affected: result.Affected}, nil
+		})
+		servicesRemoveHandler := servicesAPI.NewRemove(func(ctx context.Context, target types.ServiceTarget) (*servicesAPI.ActionResult, error) {
+			result, err := actions.RemoveServices(ctx, target)
+			if err != nil {
+				return nil, err
+			}
+
+			return &servicesAPI.ActionResult{Name: result.Name, Service: result.Service, Affected: result.Affected}, nil
+		})
+		httpAPI.RegisterFunc(servicesDeployHandler.Path, servicesDeployHandler.Handle)
+		httpAPI.RegisterFunc(servicesStopHandler.Path, servicesStopHandler.Handle)
+		httpAPI.RegisterFunc(servicesStartHandler.Path, servicesStartHandler.Handle)
+		httpAPI.RegisterFunc(servicesRestartHandler.Path, servicesRestartHandler.Handle)
+		httpAPI.RegisterFunc(servicesRemoveHandler.Path, servicesRemoveHandler.Handle)
 
 		if !unblockHTTPAPI {
 			writeStartupMessage(
