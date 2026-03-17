@@ -42,17 +42,17 @@ jobs:
           fetch-depth: 0 # Full history for GoReleaser versioning.
 
       - name: Set up Go
-        uses: actions/setup-go@27fdb267c15a8835f1ead03dfa07f89be2bb741a
+        uses: actions/setup-go@8f19afcc704763637be6b1718da0af52ca05785d
         with:
           go-version-file: "go.mod"
 
       - name: Set up QEMU # Enable multi-platform emulation.
-        uses: docker/setup-qemu-action@a4bc6cde7eccda2bdcfac02ca3348c91290880bd
+        uses: docker/setup-qemu-action@b99055d79363ee29ab720d5409f9c7007360c18b
         with:
           platforms: linux/amd64,linux/386,linux/arm/v6,linux/arm64/v8,linux/riscv64
 
       - name: Set up Docker Buildx # Configure multi-platform builds.
-        uses: docker/setup-buildx-action@c8ad1c5d0f6f39c2bc446b807fa8ea2afadcddb6
+        uses: docker/setup-buildx-action@8016837eba79c3b51bf2025379f48b6fc50f1236
         with:
           driver: docker-container
           platforms: linux/amd64,linux/386,linux/arm/v6,linux/arm64/v8,linux/riscv64
@@ -69,14 +69,14 @@ jobs:
 
       - name: Login to Docker Hub # Authenticate to Docker Hub
         if: ${{ !inputs.dry-run }}
-        uses: docker/login-action@9fe7774c8f8ebfade96f0a62aa10f3882309d517
+        uses: docker/login-action@c144859092e8e353f3e118b0b329679a62351c3e
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Login to GHCR # Authenticate to GHCR
         if: ${{ !inputs.dry-run }}
-        uses: docker/login-action@9fe7774c8f8ebfade96f0a62aa10f3882309d517
+        uses: docker/login-action@c144859092e8e353f3e118b0b329679a62351c3e
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
