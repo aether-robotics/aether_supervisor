@@ -558,6 +558,33 @@ func runMain(cfg types.RunConfig) int {
 		return metric
 	}
 
+	runApplyWithNotifications := func(ctx context.Context, filter types.Filter, params types.UpdateParams) *metrics.Metric {
+		actionParams := actions.RunUpdatesWithNotificationsParams{
+			Client:                       client,
+			Notifier:                     notifier,
+			NotificationSplitByContainer: notificationSplitByContainer,
+			NotificationReport:           notificationReport,
+			Filter:                       filter,
+			Cleanup:                      params.Cleanup,
+			NoRestart:                    noRestart,
+			MonitorOnly:                  params.MonitorOnly,
+			LifecycleHooks:               lifecycleHooks,
+			RollingRestart:               rollingRestart,
+			LabelPrecedence:              labelPrecedence,
+			NoPull:                       true,
+			Timeout:                      timeout,
+			LifecycleUID:                 lifecycleUID,
+			LifecycleGID:                 lifecycleGID,
+			CPUCopyMode:                  cpuCopyMode,
+			PullFailureDelay:             params.PullFailureDelay,
+			RunOnce:                      params.RunOnce,
+			SkipSelfUpdate:               params.SkipSelfUpdate,
+			CurrentContainerID:           currentWatchtowerContainerID,
+		}
+
+		return actions.RunUpdatesWithNotifications(ctx, actionParams)
+	}
+
 	// Create a context that is automatically canceled on SIGINT/SIGTERM signals,
 	// enabling graceful shutdown of the API, scheduler, and validation operations.
 	// The stop function is returned but not needed as the context automatically
@@ -684,6 +711,7 @@ func runMain(cfg types.RunConfig) int {
 		scope,
 		meta.Version,
 		runUpdatesWithNotifications,
+		runApplyWithNotifications,
 		filters.FilterByImage,
 		metrics.Default,
 		logging.WriteStartupMessage,

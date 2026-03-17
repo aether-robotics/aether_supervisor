@@ -15,6 +15,7 @@ import (
 
 	"github.com/aether-robotics/aether_supervisor/internal/actions"
 	"github.com/aether-robotics/aether_supervisor/pkg/api"
+	applyAPI "github.com/aether-robotics/aether_supervisor/pkg/api/apply"
 	checkAPI "github.com/aether-robotics/aether_supervisor/pkg/api/check"
 	downloadAPI "github.com/aether-robotics/aether_supervisor/pkg/api/download"
 	metricsAPI "github.com/aether-robotics/aether_supervisor/pkg/api/metrics"
@@ -80,6 +81,7 @@ func SetupAndStartAPI(
 	scope string,
 	version string,
 	runUpdatesWithNotifications func(context.Context, types.Filter, types.UpdateParams) *metrics.Metric,
+	runApplyWithNotifications func(context.Context, types.Filter, types.UpdateParams) *metrics.Metric,
 	filterByImage func([]string, types.Filter) types.Filter,
 	defaultMetrics func() *metrics.Metrics,
 	writeStartupMessage func(*cobra.Command, time.Time, string, string, container.Client, types.Notifier, string, *bool),
@@ -111,6 +113,16 @@ func SetupAndStartAPI(
 			return metric
 		}, updateLock)
 		httpAPI.RegisterFunc(updateHandler.Path, updateHandler.Handle)
+		applyHandler := applyAPI.New(func(images []string) *metrics.Metric {
+			return actions.ApplyLocalUpdates(
+				ctx,
+				filterByImage(images, filter),
+				cleanup,
+				monitorOnly,
+				runApplyWithNotifications,
+			)
+		}, updateLock)
+		httpAPI.RegisterFunc(applyHandler.Path, applyHandler.Handle)
 		checkHandler := checkAPI.New(func(images []string) (*checkAPI.Result, error) {
 			return actions.CheckForUpdates(ctx, client, filterByImage(images, filter))
 		}, updateLock)

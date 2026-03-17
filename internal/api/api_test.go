@@ -74,6 +74,9 @@ var _ = ginkgo.Describe("SetupAndStartAPI", func() {
 			runUpdatesWithNotifications := func(_ context.Context, _ types.Filter, _ types.UpdateParams) *metrics.Metric {
 				return &metrics.Metric{Scanned: 1, Updated: 1, Failed: 0}
 			}
+			runApplyWithNotifications := func(_ context.Context, _ types.Filter, _ types.UpdateParams) *metrics.Metric {
+				return &metrics.Metric{Scanned: 1, Updated: 1, Failed: 0}
+			}
 
 			// Mock other required functions
 			filterByImage := func(_ []string, filter types.Filter) types.Filter {
@@ -112,6 +115,7 @@ var _ = ginkgo.Describe("SetupAndStartAPI", func() {
 					"", // scope
 					"v1.0.0",
 					runUpdatesWithNotifications,
+					runApplyWithNotifications,
 					filterByImage,
 					defaultMetrics,
 					writeStartupMessage,
@@ -150,6 +154,9 @@ var _ = ginkgo.Describe("SetupAndStartAPI", func() {
 			runUpdatesWithNotifications := func(_ context.Context, _ types.Filter, _ types.UpdateParams) *metrics.Metric {
 				return &metrics.Metric{Scanned: 0, Updated: 0, Failed: 0}
 			}
+			runApplyWithNotifications := func(_ context.Context, _ types.Filter, _ types.UpdateParams) *metrics.Metric {
+				return &metrics.Metric{Scanned: 0, Updated: 0, Failed: 0}
+			}
 			filterByImage := func(_ []string, filter types.Filter) types.Filter {
 				return filter
 			}
@@ -186,6 +193,7 @@ var _ = ginkgo.Describe("SetupAndStartAPI", func() {
 					"",
 					"v1.0.0",
 					runUpdatesWithNotifications,
+					runApplyWithNotifications,
 					filterByImage,
 					defaultMetrics,
 					writeStartupMessage,
@@ -224,6 +232,9 @@ var _ = ginkgo.Describe("SetupAndStartAPI", func() {
 			runUpdatesWithNotifications := func(_ context.Context, _ types.Filter, _ types.UpdateParams) *metrics.Metric {
 				return &metrics.Metric{Scanned: 0, Updated: 0, Failed: 0}
 			}
+			runApplyWithNotifications := func(_ context.Context, _ types.Filter, _ types.UpdateParams) *metrics.Metric {
+				return &metrics.Metric{Scanned: 0, Updated: 0, Failed: 0}
+			}
 			filterByImage := func(_ []string, filter types.Filter) types.Filter {
 				return filter
 			}
@@ -245,6 +256,7 @@ var _ = ginkgo.Describe("SetupAndStartAPI", func() {
 				"",
 				"v1.0.0",
 				runUpdatesWithNotifications,
+				runApplyWithNotifications,
 				filterByImage,
 				defaultMetrics,
 				writeStartupMessage,
