@@ -70,7 +70,7 @@ func WriteStartupMessage(
 		apiVersion = client.GetVersion()
 	}
 
-	startupLog.Info("Aether Supervisor", watchtowerVersion, " using Docker API v", apiVersion)
+	startupLog.Info("Aether Supervisor ", watchtowerVersion, " using Docker API v", apiVersion)
 
 	// Log details about configured notifiers or lack thereof.
 	var notifierNames []string

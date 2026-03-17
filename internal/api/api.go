@@ -15,6 +15,8 @@ import (
 
 	"github.com/aether-robotics/aether_supervisor/internal/actions"
 	"github.com/aether-robotics/aether_supervisor/pkg/api"
+	checkAPI "github.com/aether-robotics/aether_supervisor/pkg/api/check"
+	downloadAPI "github.com/aether-robotics/aether_supervisor/pkg/api/download"
 	metricsAPI "github.com/aether-robotics/aether_supervisor/pkg/api/metrics"
 	servicesAPI "github.com/aether-robotics/aether_supervisor/pkg/api/services"
 	"github.com/aether-robotics/aether_supervisor/pkg/api/update"
@@ -109,6 +111,16 @@ func SetupAndStartAPI(
 			return metric
 		}, updateLock)
 		httpAPI.RegisterFunc(updateHandler.Path, updateHandler.Handle)
+		checkHandler := checkAPI.New(func(images []string) (*checkAPI.Result, error) {
+			return actions.CheckForUpdates(ctx, client, filterByImage(images, filter))
+		}, updateLock)
+		httpAPI.RegisterFunc(checkHandler.Path, checkHandler.Handle)
+
+		// Register the download API endpoint, linking it to the download handler that manages image downloads.
+		downloadHandler := downloadAPI.New(func(images []string) (*downloadAPI.Result, error) {
+			return actions.DownloadImages(ctx, client, filterByImage(images, filter), images)
+		}, updateLock)
+		httpAPI.RegisterFunc(downloadHandler.Path, downloadHandler.Handle)
 
 		servicesDeployHandler := servicesAPI.New(func(ctx context.Context, spec types.AppSpec) (*servicesAPI.DeployResult, error) {
 			result, err := actions.DeployServices(ctx, spec)

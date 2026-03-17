@@ -11,4 +11,9 @@ docker run -d --name "supervisor" \
   -e WATCHTOWER_HTTP_API_PERIODIC_POLLS=true \
   -p 8080:8080 \
   --label=com.centurylinklabs.watchtower.enable=false \
-  dkhoanguyen/aether_supervisor:latest --interval 10 --http-api-update --http-api-port 8080 --update-on-start
+  dkhoanguyen/aether_supervisor:latest \
+  --interval 10 \
+  --http-api-update \
+  --http-api-port 8080 \
+  --update-on-start \
+  --monitor-only
