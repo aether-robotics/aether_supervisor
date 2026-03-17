@@ -6,8 +6,8 @@ import (
 	"github.com/onsi/ginkgo/v2"
 	"github.com/onsi/gomega"
 
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/registry"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry"
 )
 
 var _ = ginkgo.Describe("Registry", func() {

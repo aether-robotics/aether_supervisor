@@ -8,8 +8,8 @@ import (
 
 	dockerContainer "github.com/docker/docker/api/types/container"
 
-	"github.com/nicholas-fedor/watchtower/pkg/types"
-	mockTypes "github.com/nicholas-fedor/watchtower/pkg/types/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
+	mockTypes "github.com/aether-robotics/aether_supervisor/pkg/types/mocks"
 )
 
 var _ = ginkgo.Describe("TimeSorter", func() {

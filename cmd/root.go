@@ -15,18 +15,18 @@ import (
 
 	dockerContainer "github.com/docker/docker/api/types/container"
 
-	"github.com/nicholas-fedor/watchtower/internal/actions"
-	"github.com/nicholas-fedor/watchtower/internal/api"
-	"github.com/nicholas-fedor/watchtower/internal/flags"
-	"github.com/nicholas-fedor/watchtower/internal/logging"
-	"github.com/nicholas-fedor/watchtower/internal/meta"
-	"github.com/nicholas-fedor/watchtower/internal/scheduling"
-	"github.com/nicholas-fedor/watchtower/internal/util"
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	"github.com/nicholas-fedor/watchtower/pkg/filters"
-	"github.com/nicholas-fedor/watchtower/pkg/metrics"
-	"github.com/nicholas-fedor/watchtower/pkg/notifications"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/actions"
+	"github.com/aether-robotics/aether_supervisor/internal/api"
+	"github.com/aether-robotics/aether_supervisor/internal/flags"
+	"github.com/aether-robotics/aether_supervisor/internal/logging"
+	"github.com/aether-robotics/aether_supervisor/internal/meta"
+	"github.com/aether-robotics/aether_supervisor/internal/scheduling"
+	"github.com/aether-robotics/aether_supervisor/internal/util"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	"github.com/aether-robotics/aether_supervisor/pkg/filters"
+	"github.com/aether-robotics/aether_supervisor/pkg/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 var (
@@ -197,7 +197,7 @@ func NewRootCommand() *cobra.Command {
 	return &cobra.Command{
 		Use:    "watchtower",
 		Short:  "Automatically updates running Docker containers",
-		Long:   "\nWatchtower automatically updates running Docker containers whenever a new image is released.\nMore information available at https://github.com/nicholas-fedor/watchtower/.",
+		Long:   "\nWatchtower automatically updates running Docker containers whenever a new image is released.\nMore information available at https://github.com/aether-robotics/aether_supervisor/.",
 		Run:    run,
 		PreRun: preRun,
 		Args:   cobra.ArbitraryArgs, // Permits any number of positional arguments, processed as container names later.

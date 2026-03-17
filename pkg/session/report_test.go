@@ -4,8 +4,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/nicholas-fedor/watchtower/pkg/types"
-	mockTypes "github.com/nicholas-fedor/watchtower/pkg/types/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
+	mockTypes "github.com/aether-robotics/aether_supervisor/pkg/types/mocks"
 )
 
 func Test_report_Scanned(t *testing.T) {

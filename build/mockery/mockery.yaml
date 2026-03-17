@@ -2,7 +2,7 @@
 #                                                                                                    #
 #                                    Watchtower Mockery Configuration                                #
 #                                                                                                    #
-# Watchtower: https://github.com/nicholas-fedor/watchtower/                                          #
+# Watchtower: https://github.com/aether-robotics/aether_supervisor/                                          #
 # Mockery: https://vektra.github.io/mockery/latest/                                                  #
 # Configuration: https://vektra.github.io/mockery/latest/configuration                               #
 # Mockery Major Version: 3.x.x                                                                       #
@@ -80,10 +80,10 @@
 # Default: null
 packages:
   # Top-level pkg directory, recursively includes all subpackages (e.g., pkg/types, pkg/container)
-  github.com/nicholas-fedor/watchtower/pkg: {}
+  github.com/aether-robotics/aether_supervisor/pkg: {}
 
   # Top-level internal directory, recursively includes all subpackages (e.g., internal/actions)
-  github.com/nicholas-fedor/watchtower/internal: {}
+  github.com/aether-robotics/aether_supervisor/internal: {}
 
 # Generate mocks for all exported interfaces within specified packages or directories.
 # When true with packages section, processes all interfaces in listed packages.

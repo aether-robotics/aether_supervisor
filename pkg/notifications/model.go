@@ -3,7 +3,7 @@ package notifications
 import (
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // StaticData is the part of the notification template data model set upon initialization.

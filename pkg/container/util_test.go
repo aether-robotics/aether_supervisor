@@ -4,7 +4,7 @@ import (
 	"github.com/onsi/ginkgo/v2"
 	"github.com/onsi/gomega"
 
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 var _ = ginkgo.Describe("container utils", func() {

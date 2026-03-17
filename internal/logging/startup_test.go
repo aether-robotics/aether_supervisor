@@ -10,8 +10,8 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/internal/logging"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/internal/logging"
 )
 
 // TestStartupLogging runs the Ginkgo test suite for the internal logging startup package.

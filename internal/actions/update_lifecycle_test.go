@@ -10,9 +10,9 @@ import (
 
 	dockerContainer "github.com/docker/docker/api/types/container"
 
-	"github.com/nicholas-fedor/watchtower/internal/actions"
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/actions"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 var _ = ginkgo.Describe("the update action", func() {

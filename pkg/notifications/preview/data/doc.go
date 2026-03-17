@@ -49,7 +49,7 @@
 //	result, _ := preview.Render(template, data.Entries, data.Report())
 //
 // Dependencies:
-//   - github.com/nicholas-fedor/watchtower/pkg/types: Provides Report and ContainerReport interfaces.
+//   - github.com/aether-robotics/aether_supervisor/pkg/types: Provides Report and ContainerReport interfaces.
 //   - github.com/sirupsen/logrus: Used for log entry levels and data structures.
 //   - math/rand: Used for deterministic random generation of IDs, names, and timestamps.
 //   - encoding/hex, strconv, time: Standard library packages for ID generation and time handling.
@@ -61,5 +61,5 @@
 //   - The package is designed for preview purposes only and does not interact with live Docker environments.
 //   - Future enhancements could include more dynamic log message generation or integration with real log data.
 //
-// For more details, see the Watchtower documentation at https://pkg.go.dev/github.com/nicholas-fedor/watchtower.
+// For more details, see the Watchtower documentation at https://pkg.go.dev/github.com/aether-robotics/aether_supervisor.
 package data

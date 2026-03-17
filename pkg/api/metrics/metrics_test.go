@@ -11,9 +11,9 @@ import (
 	"github.com/onsi/gomega"
 	"github.com/onsi/gomega/ghttp"
 
-	"github.com/nicholas-fedor/watchtower/pkg/api"
-	metricsAPI "github.com/nicholas-fedor/watchtower/pkg/api/metrics"
-	"github.com/nicholas-fedor/watchtower/pkg/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/api"
+	metricsAPI "github.com/aether-robotics/aether_supervisor/pkg/api/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/metrics"
 )
 
 const (

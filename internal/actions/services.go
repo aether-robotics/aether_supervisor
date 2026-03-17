@@ -22,8 +22,8 @@ import (
 	"github.com/docker/go-connections/nat"
 	"github.com/sirupsen/logrus"
 
-	composepkg "github.com/nicholas-fedor/watchtower/pkg/compose"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	composepkg "github.com/aether-robotics/aether_supervisor/pkg/compose"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 const (

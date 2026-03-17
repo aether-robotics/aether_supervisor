@@ -2,7 +2,7 @@
 #                                                                                                    #
 #                        Watchtower GoReleaser Production Release Configuration                      #
 #                                                                                                    #
-# Watchtower: https://github.com/nicholas-fedor/watchtower/                                          #
+# Watchtower: https://github.com/aether-robotics/aether_supervisor/                                          #
 # GoReleaser: https://goreleaser.com/                                                                #
 #                                                                                                    #
 ######################################################################################################
@@ -37,8 +37,8 @@ builds:
       - -X main.version={{ .Version }}
       - -X main.commit={{ .Commit }}
       - -X main.date={{ .CommitDate }}
-      - -X github.com/nicholas-fedor/watchtower/internal/meta.Version={{ .Version }}
-      - -X github.com/nicholas-fedor/watchtower/pkg/registry/digest.UserAgent=Watchtower/v{{ .Version }}
+      - -X github.com/aether-robotics/aether_supervisor/internal/meta.Version={{ .Version }}
+      - -X github.com/aether-robotics/aether_supervisor/pkg/registry/digest.UserAgent=Watchtower/v{{ .Version }}
 
     # Custom environment variables to be set during the builds.
     # Invalid environment variables will be ignored.

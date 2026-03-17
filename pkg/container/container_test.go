@@ -18,10 +18,10 @@ import (
 	dockerNat "github.com/docker/go-connections/nat"
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
 
-	"github.com/nicholas-fedor/watchtower/internal/flags"
-	"github.com/nicholas-fedor/watchtower/pkg/compose"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
-	mockTypes "github.com/nicholas-fedor/watchtower/pkg/types/mocks"
+	"github.com/aether-robotics/aether_supervisor/internal/flags"
+	"github.com/aether-robotics/aether_supervisor/pkg/compose"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
+	mockTypes "github.com/aether-robotics/aether_supervisor/pkg/types/mocks"
 )
 
 // testContainerName is used for testing self-referencing dependency scenarios.

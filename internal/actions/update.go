@@ -14,13 +14,13 @@ import (
 	cerrdefs "github.com/containerd/errdefs"
 	dockerContainer "github.com/docker/docker/api/types/container"
 
-	"github.com/nicholas-fedor/watchtower/pkg/compose"
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	"github.com/nicholas-fedor/watchtower/pkg/filters"
-	"github.com/nicholas-fedor/watchtower/pkg/lifecycle"
-	"github.com/nicholas-fedor/watchtower/pkg/session"
-	"github.com/nicholas-fedor/watchtower/pkg/sorter"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/compose"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	"github.com/aether-robotics/aether_supervisor/pkg/filters"
+	"github.com/aether-robotics/aether_supervisor/pkg/lifecycle"
+	"github.com/aether-robotics/aether_supervisor/pkg/session"
+	"github.com/aether-robotics/aether_supervisor/pkg/sorter"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // defaultPullFailureDelay defines the default delay duration for failed Watchtower self-update pulls.

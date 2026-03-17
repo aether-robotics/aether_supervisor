@@ -26,8 +26,8 @@ import (
 	dockerContainer "github.com/docker/docker/api/types/container"
 	dockerImage "github.com/docker/docker/api/types/image"
 
-	"github.com/nicholas-fedor/watchtower/pkg/registry/auth"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/auth"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // TestAuth executes the registry authentication test suite using the Ginkgo

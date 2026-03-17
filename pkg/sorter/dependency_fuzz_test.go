@@ -9,10 +9,10 @@ import (
 
 	dockerContainer "github.com/docker/docker/api/types/container"
 
-	"github.com/nicholas-fedor/watchtower/internal/util"
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	mockSorter "github.com/nicholas-fedor/watchtower/pkg/sorter/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/util"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	mockSorter "github.com/aether-robotics/aether_supervisor/pkg/sorter/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // FuzzDependencySort fuzz tests the dependency sorting algorithm with random inputs.

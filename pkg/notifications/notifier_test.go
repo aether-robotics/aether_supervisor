@@ -11,9 +11,9 @@ import (
 	"github.com/onsi/gomega"
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/cmd"
-	"github.com/nicholas-fedor/watchtower/internal/flags"
-	"github.com/nicholas-fedor/watchtower/pkg/notifications"
+	"github.com/aether-robotics/aether_supervisor/cmd"
+	"github.com/aether-robotics/aether_supervisor/internal/flags"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications"
 )
 
 var _ = ginkgo.Describe("notifications", func() {
@@ -184,7 +184,7 @@ var _ = ginkgo.Describe("notifications", func() {
 			token := "abvsihdbau"
 			color := notifications.ColorInt
 			username := "containrrrbot"
-			iconURL := "https://github.com/nicholas-fedor/watchtower/blob/main/watchtower-sq180.png"
+			iconURL := "https://github.com/aether-robotics/aether_supervisor/blob/main/watchtower-sq180.png"
 			expected := fmt.Sprintf(
 				"discord://%s@%s?color=0x%x&colordebug=0x0&colorerror=0x0&colorinfo=0x0&colorwarn=0x0&username=watchtower",
 				token,
@@ -267,7 +267,7 @@ var _ = ginkgo.Describe("notifications", func() {
 			tokenB := "BBBBBBBBB"
 			tokenC := "123456789123456789123456"
 			color := url.QueryEscape(notifications.ColorHex)
-			iconURL := "https://github.com/nicholas-fedor/watchtower/blob/main/watchtower-sq180.png"
+			iconURL := "https://github.com/aether-robotics/aether_supervisor/blob/main/watchtower-sq180.png"
 			iconEmoji := "whale"
 
 			ginkgo.When("icon URL is specified", func() {

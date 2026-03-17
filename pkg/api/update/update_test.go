@@ -19,8 +19,8 @@ import (
 	"github.com/onsi/gomega/ghttp"
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/api/update"
-	"github.com/nicholas-fedor/watchtower/pkg/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/api/update"
+	"github.com/aether-robotics/aether_supervisor/pkg/metrics"
 )
 
 func TestUpdate(t *testing.T) {

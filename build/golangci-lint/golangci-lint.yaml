@@ -2,7 +2,7 @@
 #                                                                                                    #
 #                              Watchtower golangci-lint Configuration                                #
 #                                                                                                    #
-# Repository: https://github.com/nicholas-fedor/watchtower/                                          #
+# Repository: https://github.com/aether-robotics/aether_supervisor/                                          #
 # License: Apache 2.0                                                                                #
 # Golangci-lint: https://golangci-lint.run/                                                          #
 # yaml-language-server: $schema=https://golangci-lint.run/jsonschema/golangci.jsonschema.json        #
@@ -30,7 +30,7 @@ formatters:
       sections:
         - standard # Standard section: captures all standard packages.
         - default # Default section: contains all imports that could not be matched to another section type.
-        - prefix(github.com/nicholas-fedor/watchtower) # Custom section: groups all imports with the specified Prefix.
+        - prefix(github.com/aether-robotics/aether_supervisor) # Custom section: groups all imports with the specified Prefix.
         - blank # Blank section: contains all blank imports. This section is not present unless explicitly enabled.
         - dot # Dot section: contains all dot imports. This section is not present unless explicitly enabled.
         - alias # Alias section: contains all alias imports. This section is not present unless explicitly enabled.
@@ -66,7 +66,7 @@ formatters:
           replacement: "append(make([]T, 0), x)"
           # or better: just "[]T{x}" if building a new slice
     gofumpt:
-      module-path: "github.com/nicholas-fedor/watchtower"
+      module-path: "github.com/aether-robotics/aether_supervisor"
       extra-rules: true
     golines:
       # Target maximum line length.

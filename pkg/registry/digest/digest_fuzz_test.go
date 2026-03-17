@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/registry/digest"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/digest"
 )
 
 // FuzzExtractHeadDigest fuzzes the header parsing in extractHeadDigest to test for crashes or unexpected behavior with malformed inputs.

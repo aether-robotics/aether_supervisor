@@ -3,7 +3,7 @@ package session
 import (
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // Progress tracks container statuses during a session.

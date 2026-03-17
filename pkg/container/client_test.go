@@ -24,9 +24,9 @@ import (
 	dockerClient "github.com/docker/docker/client"
 	gomegaTypes "github.com/onsi/gomega/types"
 
-	mockContainer "github.com/nicholas-fedor/watchtower/pkg/container/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/filters"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	mockContainer "github.com/aether-robotics/aether_supervisor/pkg/container/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/filters"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 const (

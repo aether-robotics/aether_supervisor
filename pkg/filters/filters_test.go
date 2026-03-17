@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	mockContainer "github.com/nicholas-fedor/watchtower/pkg/container/mocks"
+	mockContainer "github.com/aether-robotics/aether_supervisor/pkg/container/mocks"
 )
 
 func TestWatchtowerContainersFilter(t *testing.T) {

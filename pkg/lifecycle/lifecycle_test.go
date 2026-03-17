@@ -13,9 +13,9 @@ import (
 
 	dockerContainer "github.com/docker/docker/api/types/container"
 
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	mockContainer "github.com/nicholas-fedor/watchtower/pkg/container/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	mockContainer "github.com/aether-robotics/aether_supervisor/pkg/container/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // mockedContainer creates a *container.Container for testing.

@@ -19,9 +19,9 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
-	"github.com/nicholas-fedor/watchtower/pkg/registry/auth"
-	"github.com/nicholas-fedor/watchtower/pkg/registry/manifest"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/auth"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/manifest"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // ContentDigestHeader is the HTTP header key used to retrieve the digest from a registry's response.

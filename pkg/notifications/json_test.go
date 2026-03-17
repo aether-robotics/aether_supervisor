@@ -5,7 +5,7 @@ import (
 	"github.com/onsi/gomega"
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/session"
+	"github.com/aether-robotics/aether_supervisor/pkg/session"
 )
 
 var _ = ginkgo.Describe("JSON template", func() {

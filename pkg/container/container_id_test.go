@@ -11,9 +11,9 @@ import (
 	dockerContainer "github.com/docker/docker/api/types/container"
 	dockerImage "github.com/docker/docker/api/types/image"
 
-	mockContainer "github.com/nicholas-fedor/watchtower/pkg/container/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
-	mockTypes "github.com/nicholas-fedor/watchtower/pkg/types/mocks"
+	mockContainer "github.com/aether-robotics/aether_supervisor/pkg/container/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
+	mockTypes "github.com/aether-robotics/aether_supervisor/pkg/types/mocks"
 )
 
 const testHostname = "test-hostname"

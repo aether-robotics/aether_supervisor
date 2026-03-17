@@ -10,8 +10,8 @@ import (
 
 	"github.com/distribution/reference"
 
-	"github.com/nicholas-fedor/watchtower/pkg/registry/auth"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/auth"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // FuzzProcessChallenge fuzzes the processChallenge function to test for crashes or unexpected behavior

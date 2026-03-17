@@ -1,7 +1,7 @@
 # Watchtower Documentation Website Setup
 
 [![Documentation](https://img.shields.io/badge/docs-live-blue)](https://nicholas-fedor.github.io/watchtower/)
-[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/nicholas-fedor/watchtower/publish-docs.yaml)](https://github.com/nicholas-fedor/watchtower/actions)
+[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/nicholas-fedor/watchtower/publish-docs.yaml)](https://github.com/aether-robotics/aether_supervisor/actions)
 
 ## Table of Contents
 
@@ -471,7 +471,7 @@ The template preview is integrated into `docs/notifications/template-preview/ind
 1. **Clone Repository**:
 
     ```bash
-    git clone https://github.com/nicholas-fedor/watchtower.git
+    git clone https://github.com/aether-robotics/aether_supervisor.git
     cd watchtower
     ```
 

@@ -20,9 +20,9 @@ import (
 	dockerContainer "github.com/docker/docker/api/types/container"
 	dockerClient "github.com/docker/docker/client"
 
-	"github.com/nicholas-fedor/watchtower/internal/flags"
-	"github.com/nicholas-fedor/watchtower/pkg/registry"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/flags"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // Constants for CPUCopyMode values.

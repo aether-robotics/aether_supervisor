@@ -5,11 +5,11 @@
 ### Container Image
 
 - [Docker Hub](https://hub.docker.com/r/nickfedor/watchtower){target="_blank" rel="noopener noreferrer"}
-- [GitHub Container Registry](https://github.com/nicholas-fedor/watchtower/pkgs/container/watchtower){target="_blank" rel="noopener noreferrer"}
+- [GitHub Container Registry](https://github.com/aether-robotics/aether_supervisor/pkgs/container/watchtower){target="_blank" rel="noopener noreferrer"}
 
 ### Binary
 
-- [GitHub Releases](https://github.com/nicholas-fedor/watchtower/releases){target="_blank" rel="noopener noreferrer"}
+- [GitHub Releases](https://github.com/aether-robotics/aether_supervisor/releases){target="_blank" rel="noopener noreferrer"}
 
 ## CLI Commands
 
@@ -50,7 +50,7 @@ The following will download and extract the binary to the current directory:
     ```
 
 !!! Note
-    Review the [release page](https://github.com/nicholas-fedor/watchtower/releases){target="_blank" rel="noopener noreferrer"} for additional architectures (e.g., arm, arm64, i386, riscv64).
+    Review the [release page](https://github.com/aether-robotics/aether_supervisor/releases){target="_blank" rel="noopener noreferrer"} for additional architectures (e.g., arm, arm64, i386, riscv64).
 
 ## Supported Architectures
 

@@ -12,9 +12,9 @@ import (
 	dockerImage "github.com/docker/docker/api/types/image"
 	dockerClient "github.com/docker/docker/client"
 
-	"github.com/nicholas-fedor/watchtower/pkg/registry"
-	"github.com/nicholas-fedor/watchtower/pkg/registry/digest"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/digest"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // Warning strategies for HEAD request failures.

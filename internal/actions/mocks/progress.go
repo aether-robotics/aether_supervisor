@@ -4,8 +4,8 @@ package mocks
 import (
 	"errors"
 
-	"github.com/nicholas-fedor/watchtower/pkg/session"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/session"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // errMockSkipped is a static error indicating a mock container was skipped.

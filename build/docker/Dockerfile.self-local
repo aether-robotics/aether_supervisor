@@ -23,7 +23,7 @@ RUN apk add --no-cache \
 COPY . /watchtower
 
 RUN cd /watchtower && \
-    GO111MODULE=on CGO_ENABLED=0 go build -a -ldflags "-extldflags '-static' -X github.com/nicholas-fedor/watchtower/internal/meta.Version=$(git describe --tags) -X github.com/nicholas-fedor/watchtower/pkg/registry/digest.UserAgent=Watchtower/v$(git describe --tags)" .
+    GO111MODULE=on CGO_ENABLED=0 go build -a -ldflags "-extldflags '-static' -X github.com/aether-robotics/aether_supervisor/internal/meta.Version=$(git describe --tags) -X github.com/aether-robotics/aether_supervisor/pkg/registry/digest.UserAgent=Watchtower/v$(git describe --tags)" .
 
 
 #
@@ -36,7 +36,7 @@ LABEL \
     "com.centurylinklabs.watchtower"="true" \
     "org.opencontainers.image.url"="https://watchtower.nickfedor.com" \
     "org.opencontainers.image.documentation"="https://watchtower.nickfedor.com" \
-    "org.opencontainers.image.source"="https://github.com/nicholas-fedor/watchtower" \
+    "org.opencontainers.image.source"="https://github.com/aether-robotics/aether_supervisor" \
     "org.opencontainers.image.licenses"="Apache-2.0" \
     "org.opencontainers.image.title"="Watchtower" \
     "org.opencontainers.image.description"="A process for automating Docker container base image updates." \

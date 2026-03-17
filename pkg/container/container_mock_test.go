@@ -18,7 +18,7 @@ import (
 	dockerspec "github.com/moby/docker-image-spec/specs-go/v1"
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
 
-	mockContainer "github.com/nicholas-fedor/watchtower/pkg/container/mocks"
+	mockContainer "github.com/aether-robotics/aether_supervisor/pkg/container/mocks"
 )
 
 // MockContainerUpdate defines a function to update mock container or image metadata for testing.

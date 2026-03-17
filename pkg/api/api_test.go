@@ -22,7 +22,7 @@ import (
 	"github.com/onsi/gomega/ghttp"
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/api"
+	"github.com/aether-robotics/aether_supervisor/pkg/api"
 )
 
 // testToken is a constant token used for testing authentication.

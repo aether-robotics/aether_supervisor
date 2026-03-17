@@ -12,8 +12,8 @@ import (
 
 	dockerImage "github.com/docker/docker/api/types/image"
 
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/registry/manifest"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/manifest"
 )
 
 func TestManifest(t *testing.T) {

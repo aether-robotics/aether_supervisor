@@ -7,8 +7,8 @@ import (
 	dockerContainer "github.com/docker/docker/api/types/container"
 	dockerImage "github.com/docker/docker/api/types/image"
 
-	"github.com/nicholas-fedor/watchtower/internal/util"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/util"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // SimpleContainer implements a minimal Container interface for benchmarking.

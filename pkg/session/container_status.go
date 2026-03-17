@@ -1,7 +1,7 @@
 package session
 
 import (
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // State enum values.

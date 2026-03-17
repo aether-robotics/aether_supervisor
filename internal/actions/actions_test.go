@@ -12,11 +12,11 @@ import (
 
 	dockerContainer "github.com/docker/docker/api/types/container"
 
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/filters"
-	"github.com/nicholas-fedor/watchtower/pkg/metrics"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
-	mockTypes "github.com/nicholas-fedor/watchtower/pkg/types/mocks"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/filters"
+	"github.com/aether-robotics/aether_supervisor/pkg/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
+	mockTypes "github.com/aether-robotics/aether_supervisor/pkg/types/mocks"
 )
 
 var _ = ginkgo.Describe("Actions", func() {

@@ -7,9 +7,9 @@ import (
 
 	dockerImageType "github.com/docker/docker/api/types/image"
 
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/registry/manifest"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/manifest"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // FuzzBuildManifestURL fuzzes the BuildManifestURL function with various image reference strings

@@ -18,8 +18,8 @@ import (
 
 	shoutrrrTypes "github.com/nicholas-fedor/shoutrrr/pkg/types"
 
-	"github.com/nicholas-fedor/watchtower/pkg/notifications/templates"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications/templates"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // shoutrrrType is the identifier for Shoutrrr notifications.

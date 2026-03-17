@@ -12,15 +12,15 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/mock"
 
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/internal/api"
-	mockAPI "github.com/nicholas-fedor/watchtower/pkg/api/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/api/update"
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	"github.com/nicholas-fedor/watchtower/pkg/filters"
-	"github.com/nicholas-fedor/watchtower/pkg/metrics"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
-	mockTypes "github.com/nicholas-fedor/watchtower/pkg/types/mocks"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/internal/api"
+	mockAPI "github.com/aether-robotics/aether_supervisor/pkg/api/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/api/update"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	"github.com/aether-robotics/aether_supervisor/pkg/filters"
+	"github.com/aether-robotics/aether_supervisor/pkg/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
+	mockTypes "github.com/aether-robotics/aether_supervisor/pkg/types/mocks"
 )
 
 // TestAPI runs the Ginkgo test suite for the internal API package.

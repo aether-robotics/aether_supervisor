@@ -1,7 +1,7 @@
 package sorter
 
 import (
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // Sorter provides a common interface for sorting containers.

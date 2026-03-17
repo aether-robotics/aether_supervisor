@@ -13,8 +13,8 @@ import (
 	"github.com/onsi/gomega/ghttp"
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/api/services"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/api/services"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 func TestServices(t *testing.T) {

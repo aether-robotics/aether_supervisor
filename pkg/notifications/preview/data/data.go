@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // PreviewData represents a generator for preview data, including container statuses and log entries.

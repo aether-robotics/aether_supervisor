@@ -1,7 +1,7 @@
 package container
 
 import (
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // CycleDetector implements cycle detection in container dependency graphs using the three-color DFS algorithm.

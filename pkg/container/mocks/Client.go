@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/docker/docker/api/types/container"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 	mock "github.com/stretchr/testify/mock"
 )
 

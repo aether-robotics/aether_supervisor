@@ -6,7 +6,7 @@ site_name: Watchtower
 # https://www.mkdocs.org/user-guide/configuration/#site_url
 site_url: https://watchtower.nickfedor.com/
 # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#repository
-repo_url: https://github.com/nicholas-fedor/watchtower/
+repo_url: https://github.com/aether-robotics/aether_supervisor/
 
 # Path from repo_url to the docs directory for direct editing links.
 # Set to main branch.
@@ -96,7 +96,7 @@ extra:
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#social-links
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/nicholas-fedor/watchtower
+      link: https://github.com/aether-robotics/aether_supervisor
   # Disables the "Made with MkDocs" generator text in the footer.
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#generator-notice
   generator: false

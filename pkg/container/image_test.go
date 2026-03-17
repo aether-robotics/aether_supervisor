@@ -16,9 +16,9 @@ import (
 	dockerClient "github.com/docker/docker/client"
 	gomegaTypes "github.com/onsi/gomega/types"
 
-	"github.com/nicholas-fedor/watchtower/internal/util"
-	mockContainer "github.com/nicholas-fedor/watchtower/pkg/container/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/util"
+	mockContainer "github.com/aether-robotics/aether_supervisor/pkg/container/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 var _ = ginkgo.Describe("the client", func() {

@@ -6,8 +6,8 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // ValidateRollingRestartDependencies validates the environment for rolling restart updates.

@@ -5,7 +5,7 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"github.com/nicholas-fedor/watchtower/pkg/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/metrics"
 )
 
 // Handler is an HTTP handle for serving metric data.

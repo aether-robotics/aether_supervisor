@@ -26,12 +26,12 @@ import (
 
 	dockerImage "github.com/docker/docker/api/types/image"
 
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/registry/auth"
-	"github.com/nicholas-fedor/watchtower/pkg/registry/digest"
-	"github.com/nicholas-fedor/watchtower/pkg/registry/manifest"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
-	mockTypes "github.com/nicholas-fedor/watchtower/pkg/types/mocks"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/auth"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/digest"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/manifest"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
+	mockTypes "github.com/aether-robotics/aether_supervisor/pkg/types/mocks"
 )
 
 const (

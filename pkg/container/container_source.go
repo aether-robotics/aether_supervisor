@@ -16,8 +16,8 @@ import (
 	dockerAPIVersion "github.com/docker/docker/api/types/versions"
 	dockerClient "github.com/docker/docker/client"
 
-	"github.com/nicholas-fedor/watchtower/internal/util"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/util"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // defaultStopSignal is the default signal for stopping containers ("SIGTERM").

@@ -12,8 +12,8 @@ import (
 	dockerContainer "github.com/docker/docker/api/types/container"
 	dockerImage "github.com/docker/docker/api/types/image"
 
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // mockIDLength defines the total length of mock container IDs.

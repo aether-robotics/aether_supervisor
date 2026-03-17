@@ -8,9 +8,9 @@ import (
 	"github.com/onsi/gomega"
 	"github.com/stretchr/testify/mock"
 
-	mockContainer "github.com/nicholas-fedor/watchtower/pkg/container/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
-	mockContainerTypes "github.com/nicholas-fedor/watchtower/pkg/types/mocks"
+	mockContainer "github.com/aether-robotics/aether_supervisor/pkg/container/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
+	mockContainerTypes "github.com/aether-robotics/aether_supervisor/pkg/types/mocks"
 )
 
 var _ = ginkgo.Describe("ValidateRollingRestartDependencies", func() {

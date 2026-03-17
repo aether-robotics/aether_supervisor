@@ -10,7 +10,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/metrics"
 )
 
 // retryAfterSeconds is the value for the Retry-After header in 429 responses.

@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	types "github.com/nicholas-fedor/watchtower/pkg/types"
+	types "github.com/aether-robotics/aether_supervisor/pkg/types"
 	mock "github.com/stretchr/testify/mock"
 )
 

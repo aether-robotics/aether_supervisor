@@ -17,10 +17,10 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	mockActions "github.com/nicholas-fedor/watchtower/internal/actions/mocks"
-	"github.com/nicholas-fedor/watchtower/internal/flags"
-	"github.com/nicholas-fedor/watchtower/pkg/notifications/templates"
-	"github.com/nicholas-fedor/watchtower/pkg/session"
+	mockActions "github.com/aether-robotics/aether_supervisor/internal/actions/mocks"
+	"github.com/aether-robotics/aether_supervisor/internal/flags"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications/templates"
+	"github.com/aether-robotics/aether_supervisor/pkg/session"
 )
 
 var allButTrace = logrus.DebugLevel

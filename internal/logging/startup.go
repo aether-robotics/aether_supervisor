@@ -10,10 +10,10 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	"github.com/nicholas-fedor/watchtower/internal/util"
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	"github.com/nicholas-fedor/watchtower/pkg/notifications"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/util"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // WriteStartupMessage logs or notifies startup information based on configuration flags.
@@ -70,7 +70,7 @@ func WriteStartupMessage(
 		apiVersion = client.GetVersion()
 	}
 
-	startupLog.Info("Watchtower ", watchtowerVersion, " using Docker API v", apiVersion)
+	startupLog.Info("Aether Supervisor", watchtowerVersion, " using Docker API v", apiVersion)
 
 	// Log details about configured notifiers or lack thereof.
 	var notifierNames []string

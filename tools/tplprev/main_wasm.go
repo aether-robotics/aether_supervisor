@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"syscall/js"
 
-	"github.com/nicholas-fedor/watchtower/internal/meta"
-	"github.com/nicholas-fedor/watchtower/pkg/notifications/preview"
-	"github.com/nicholas-fedor/watchtower/pkg/notifications/preview/data"
+	"github.com/aether-robotics/aether_supervisor/internal/meta"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications/preview"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications/preview/data"
 )
 
 func main() {

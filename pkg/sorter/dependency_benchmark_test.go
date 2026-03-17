@@ -5,8 +5,8 @@ import (
 	"math/rand"
 	"testing"
 
-	mockSorter "github.com/nicholas-fedor/watchtower/pkg/sorter/mocks"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	mockSorter "github.com/aether-robotics/aether_supervisor/pkg/sorter/mocks"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // generateBenchmarkContainers creates containers with realistic dependency patterns.

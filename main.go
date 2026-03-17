@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/cmd"
+	"github.com/aether-robotics/aether_supervisor/cmd"
 )
 
 // init configures the initial logging level for Watchtower.

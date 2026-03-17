@@ -8,11 +8,11 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	"github.com/nicholas-fedor/watchtower/pkg/metrics"
-	"github.com/nicholas-fedor/watchtower/pkg/notifications"
-	"github.com/nicholas-fedor/watchtower/pkg/session"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	"github.com/aether-robotics/aether_supervisor/pkg/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications"
+	"github.com/aether-robotics/aether_supervisor/pkg/session"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // Exported constants for update message literals to ensure consistency across the codebase.

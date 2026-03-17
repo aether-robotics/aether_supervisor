@@ -36,9 +36,9 @@
 //	fmt.Println(result) // Outputs formatted notification text
 //
 // Dependencies:
-//   - github.com/nicholas-fedor/watchtower/pkg/notifications/preview/data: Provides simulated data (PreviewData, states, logs).
-//   - github.com/nicholas-fedor/watchtower/pkg/notifications/templates: Provides template functions (e.g., ToJSON).
-//   - github.com/nicholas-fedor/watchtower/pkg/types: Provides Report and ContainerReport interfaces.
+//   - github.com/aether-robotics/aether_supervisor/pkg/notifications/preview/data: Provides simulated data (PreviewData, states, logs).
+//   - github.com/aether-robotics/aether_supervisor/pkg/notifications/templates: Provides template functions (e.g., ToJSON).
+//   - github.com/aether-robotics/aether_supervisor/pkg/types: Provides Report and ContainerReport interfaces.
 //   - github.com/sirupsen/logrus: Used for log entry structures.
 //   - text/template, strings: Standard library packages for template parsing and string building.
 //
@@ -50,7 +50,7 @@
 //   - The package integrates with the web interface via WASM, requiring recompilation (scripts/build-tplprev.sh) after changes.
 //   - Future enhancements could include support for additional template functions or more dynamic data generation.
 //
-// For more details, see the Watchtower documentation at https://pkg.go.dev/github.com/nicholas-fedor/watchtower.
+// For more details, see the Watchtower documentation at https://pkg.go.dev/github.com/aether-robotics/aether_supervisor.
 package preview
 
 import (
@@ -58,8 +58,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/nicholas-fedor/watchtower/pkg/notifications/preview/data"
-	"github.com/nicholas-fedor/watchtower/pkg/notifications/templates"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications/preview/data"
+	"github.com/aether-robotics/aether_supervisor/pkg/notifications/templates"
 )
 
 // Render generates a preview string from a template, states, and log levels.

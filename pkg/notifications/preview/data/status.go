@@ -1,6 +1,6 @@
 package data
 
-import "github.com/nicholas-fedor/watchtower/pkg/types"
+import "github.com/aether-robotics/aether_supervisor/pkg/types"
 
 //nolint:errname // containerStatus is not an error type, it contains an error field
 type containerStatus struct {

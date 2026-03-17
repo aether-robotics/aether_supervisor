@@ -13,14 +13,14 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	"github.com/nicholas-fedor/watchtower/internal/actions"
-	"github.com/nicholas-fedor/watchtower/pkg/api"
-	metricsAPI "github.com/nicholas-fedor/watchtower/pkg/api/metrics"
-	servicesAPI "github.com/nicholas-fedor/watchtower/pkg/api/services"
-	"github.com/nicholas-fedor/watchtower/pkg/api/update"
-	"github.com/nicholas-fedor/watchtower/pkg/container"
-	"github.com/nicholas-fedor/watchtower/pkg/metrics"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/actions"
+	"github.com/aether-robotics/aether_supervisor/pkg/api"
+	metricsAPI "github.com/aether-robotics/aether_supervisor/pkg/api/metrics"
+	servicesAPI "github.com/aether-robotics/aether_supervisor/pkg/api/services"
+	"github.com/aether-robotics/aether_supervisor/pkg/api/update"
+	"github.com/aether-robotics/aether_supervisor/pkg/container"
+	"github.com/aether-robotics/aether_supervisor/pkg/metrics"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // GetAPIAddr formats the API address string based on host and port.

@@ -16,7 +16,7 @@ LABEL \
   "com.centurylinklabs.watchtower"="true" \
   "org.opencontainers.image.url"="https://watchtower.nickfedor.com" \
   "org.opencontainers.image.documentation"="https://watchtower.nickfedor.com" \
-  "org.opencontainers.image.source"="https://github.com/nicholas-fedor/watchtower" \
+  "org.opencontainers.image.source"="https://github.com/aether-robotics/aether_supervisor" \
   "org.opencontainers.image.licenses"="Apache-2.0" \
   "org.opencontainers.image.title"="Watchtower" \
   "org.opencontainers.image.description"="A process for automating Docker container base image updates." \

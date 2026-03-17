@@ -14,9 +14,9 @@ import (
 	dockerNetwork "github.com/docker/docker/api/types/network"
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
 
-	"github.com/nicholas-fedor/watchtower/internal/util"
-	"github.com/nicholas-fedor/watchtower/pkg/compose"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/internal/util"
+	"github.com/aether-robotics/aether_supervisor/pkg/compose"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // Constants for container operations.

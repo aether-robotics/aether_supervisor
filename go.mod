@@ -1,4 +1,4 @@
-module github.com/nicholas-fedor/watchtower
+module github.com/aether-robotics/aether_supervisor
 
 go 1.26.1
 

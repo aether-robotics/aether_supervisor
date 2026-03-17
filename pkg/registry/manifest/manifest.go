@@ -11,8 +11,8 @@ import (
 	"github.com/distribution/reference"
 	"github.com/sirupsen/logrus"
 
-	"github.com/nicholas-fedor/watchtower/pkg/registry/auth"
-	"github.com/nicholas-fedor/watchtower/pkg/types"
+	"github.com/aether-robotics/aether_supervisor/pkg/registry/auth"
+	"github.com/aether-robotics/aether_supervisor/pkg/types"
 )
 
 // Errors for manifest operations.
