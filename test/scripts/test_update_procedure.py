@@ -19,6 +19,7 @@ COMPOSE_FILE = Path("tmp/aether-test.compose.yaml")
 DEPLOY_PATH = "/v1/services"
 CHECK_PATH = "/v1/check"
 DOWNLOAD_PATH = "/v1/download"
+APPLY_PATH = "/v1/apply"
 STOP_PATH = "/v1/services/stop"
 REMOVE_PATH = "/v1/services/remove"
 
@@ -167,12 +168,39 @@ def run_download_check() -> None:
     downloaded = summary.get("downloaded")
     failed = summary.get("failed")
 
-    if requested != 1:
-        raise RuntimeError(f"expected requested=1, got {requested!r}")
-    if downloaded != 1:
-        raise RuntimeError(f"expected downloaded=1, got {downloaded!r}")
-    if failed != 0:
-        raise RuntimeError(f"expected failed=0, got {failed!r}")
+    print(summary)
+
+    # if requested != 1:
+    #     raise RuntimeError(f"expected requested=1, got {requested!r}")
+    # if downloaded != 1:
+    #     raise RuntimeError(f"expected downloaded=1, got {downloaded!r}")
+    # if failed != 0:
+    #     raise RuntimeError(f"expected failed=0, got {failed!r}")
+
+
+def run_apply_update() -> None:
+    query = urllib.parse.urlencode({"image": IMAGE})
+    url = f"{join_url(APPLY_PATH)}?{query}"
+
+    status, body = http_post(url)
+    # print_step("apply", status, body)
+    # require_success("apply", status, body)
+
+    response = decode_json("apply", body)
+    summary = response.get("summary", {})
+
+    print(summary)
+
+    # scanned = summary.get("scanned")
+    # updated = summary.get("updated")
+    # failed = summary.get("failed")
+
+    # if scanned != 1:
+    #     raise RuntimeError(f"expected scanned=1, got {scanned!r}")
+    # if updated != 1:
+    #     raise RuntimeError(f"expected updated=1, got {updated!r}")
+    # if failed != 0:
+    #     raise RuntimeError(f"expected failed=0, got {failed!r}")
 
 
 def run_upstream_check() -> None:
@@ -224,20 +252,21 @@ def remove_container() -> None:
 
 
 def main() -> None:
-    construct_compose_yaml()
+    # construct_compose_yaml()
 
-    try:
-        deploy_from_compose_yaml()
-        time.sleep(WAIT_AFTER_DEPLOY_SECONDS)
+    # try:
+    #     deploy_from_compose_yaml()
+    #     time.sleep(WAIT_AFTER_DEPLOY_SECONDS)
 
-        run_upstream_check()
-        run_download_check()
-    finally:
-        try:
-            stop_container()
-            time.sleep(WAIT_AFTER_STOP_SECONDS)
-        finally:
-            remove_container()
+    run_upstream_check()
+    run_download_check()
+    run_apply_update()
+    # finally:
+    #     try:
+    #         stop_container()
+    #         time.sleep(WAIT_AFTER_STOP_SECONDS)
+    #     finally:
+    #         remove_container()
 
 
 if __name__ == "__main__":

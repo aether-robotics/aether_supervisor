@@ -406,6 +406,26 @@ func executeUpdate(
 	// Log before calling the Update function
 	logrus.Debug("About to call Update function")
 
+	// Log all configuration parameters for debugging
+	logrus.WithFields(logrus.Fields{
+		"filter":               config.Filter,
+		"cleanup":              config.Cleanup,
+		"no_restart":           config.NoRestart,
+		"monitor_only":         config.MonitorOnly,
+		"lifecycle_hooks":      config.LifecycleHooks,
+		"rolling_restart":      config.RollingRestart,
+		"label_precedence":     config.LabelPrecedence,
+		"no_pull":              config.NoPull,
+		"timeout":              config.Timeout,
+		"pull_failure_delay":   config.PullFailureDelay,
+		"lifecycle_uid":        config.LifecycleUID,
+		"lifecycle_gid":        config.LifecycleGID,
+		"cpu_copy_mode":        config.CPUCopyMode,
+		"run_once":             config.RunOnce,
+		"skip_self_update":     config.SkipSelfUpdate,
+		"current_container_id": config.CurrentContainerID,
+	}).Info("Update configuration parameters")
+
 	result, cleanupImageInfos, err := Update(ctx, client, config)
 
 	// Log after Update function returns

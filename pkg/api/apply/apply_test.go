@@ -64,6 +64,32 @@ var _ = ginkgo.Describe("Apply Handler", func() {
 		gomega.Expect(summary["restarted"]).To(gomega.Equal(float64(0)))
 	})
 
+	ginkgo.It("should log detailed execution fields for targeted apply requests", func() {
+		var logBuf bytes.Buffer
+		logrus.SetOutput(&logBuf)
+		logrus.SetLevel(logrus.DebugLevel)
+
+		server.AppendHandlers(handler.Handle)
+
+		resp, err := http.Post(server.URL()+"/v1/apply?image=foo/bar,baz/qux", "application/json", bytes.NewBufferString("ignored"))
+		gomega.Expect(err).ToNot(gomega.HaveOccurred())
+		defer resp.Body.Close()
+
+		gomega.Expect(resp.StatusCode).To(gomega.Equal(http.StatusOK))
+
+		logOutput := logBuf.String()
+		gomega.Expect(logOutput).To(gomega.ContainSubstring("Extracted images from apply query parameters"))
+		gomega.Expect(logOutput).To(gomega.ContainSubstring("Executing targeted apply"))
+		gomega.Expect(logOutput).To(gomega.ContainSubstring("Apply operation completed"))
+		gomega.Expect(logOutput).To(gomega.ContainSubstring("image_count=2"))
+		gomega.Expect(logOutput).To(gomega.Or(
+			gomega.ContainSubstring("images=\"[foo/bar baz/qux]\""),
+			gomega.ContainSubstring("images=[foo/bar baz/qux]"),
+		))
+		gomega.Expect(logOutput).To(gomega.ContainSubstring("scanned=2"))
+		gomega.Expect(logOutput).To(gomega.ContainSubstring("updated=1"))
+	})
+
 	ginkgo.It("should reject concurrent full apply requests with 429", func() {
 		lock := make(chan bool, 1)
 		handler = apply.New(func(_ []string) *metrics.Metric {
@@ -92,6 +118,11 @@ var _ = ginkgo.Describe("Apply Handler", func() {
 		defer resp.Body.Close()
 
 		gomega.Expect(resp.StatusCode).To(gomega.Equal(http.StatusInternalServerError))
+	})
+
+	ginkgo.AfterEach(func() {
+		logrus.SetOutput(io.Discard)
+		logrus.SetLevel(logrus.InfoLevel)
 	})
 })
 

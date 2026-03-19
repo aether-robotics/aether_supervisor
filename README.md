@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./logo.png" width="450" />
 
-# Watchtower
+# Aether Supervisor
 
   Automate Docker container image updates
   <br/><br/>
@@ -51,17 +51,6 @@ Watchtower supports the following architectures for its Docker images:
 ## Documentation
 
 The full documentation is available at <https://watchtower.nickfedor.com/>.
-
-## Star History
-
-<a href="https://www.star-history.com/#nicholas-fedor/watchtower&type=timeline&logscale&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=nicholas-fedor/watchtower&type=timeline&theme=dark&logscale&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=nicholas-fedor/watchtower&type=timeline&logscale&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=nicholas-fedor/watchtower&type=timeline&logscale&legend=top-left" />
- </picture>
-</a>
-<!-- markdownlint-restore -->
 
 ## Contributors
 

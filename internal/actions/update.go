@@ -377,6 +377,16 @@ func Update(
 			}
 		}
 
+		// Print all containers for updates
+		updateContainerNames := make([]string, len(allContainersToRestart))
+		for i, c := range allContainersToRestart {
+			updateContainerNames[i] = c.Name()
+			logrus.WithFields(logrus.Fields{
+				"container": c.Name(),
+			}).Info("Container marked for update")
+
+		}
+
 		// Stop and restart containers in batches, respecting dependency order.
 		failedStop, stoppedImages = stopContainersInReversedOrder(
 			ctx,

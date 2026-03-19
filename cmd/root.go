@@ -567,7 +567,7 @@ func runMain(cfg types.RunConfig) int {
 			Filter:                       filter,
 			Cleanup:                      params.Cleanup,
 			NoRestart:                    noRestart,
-			MonitorOnly:                  params.MonitorOnly,
+			MonitorOnly:                  false, // Apply updates always performs updates, never monitor-only
 			LifecycleHooks:               lifecycleHooks,
 			RollingRestart:               rollingRestart,
 			LabelPrecedence:              labelPrecedence,

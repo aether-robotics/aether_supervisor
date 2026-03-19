@@ -27,9 +27,14 @@ func New(applyFn func(images []string) *metrics.Metric, applyLock chan bool) *Ha
 	var hLock chan bool
 	if applyLock != nil {
 		hLock = applyLock
+
+		logrus.WithField("source", "provided").
+			Debug("Initialized apply lock from provided channel")
 	} else {
 		hLock = make(chan bool, 1)
 		hLock <- true
+
+		logrus.Debug("Initialized new apply lock channel")
 	}
 
 	return &Handler{
@@ -60,26 +65,60 @@ func (handle *Handler) Handle(w http.ResponseWriter, r *http.Request) {
 		for _, image := range imageQueries {
 			images = append(images, strings.Split(image, ",")...)
 		}
+
+		logrus.WithFields(logrus.Fields{
+			"images":      images,
+			"image_count": len(images),
+		}).Debug("Extracted images from apply query parameters")
+	} else {
+		logrus.Debug("No image query parameters provided for apply request")
 	}
+
+	logrus.WithFields(logrus.Fields{
+		"targeted":    len(images) > 0,
+		"image_count": len(images),
+	}).Debug("Apply handler attempting to acquire lock")
 
 	if len(images) > 0 {
 		select {
 		case chanValue := <-handle.lock:
+			logrus.WithFields(logrus.Fields{
+				"targeted":    true,
+				"image_count": len(images),
+			}).Debug("Apply handler acquired lock")
+
 			defer func() {
+				logrus.WithFields(logrus.Fields{
+					"targeted":    true,
+					"image_count": len(images),
+				}).Debug("Apply handler releasing lock")
 				handle.lock <- chanValue
 			}()
 		case <-r.Context().Done():
+			logrus.WithFields(logrus.Fields{
+				"targeted":    true,
+				"image_count": len(images),
+			}).Debug("Apply request cancelled while waiting for lock")
 			http.Error(w, "request cancelled", http.StatusServiceUnavailable)
 
 			return
 		}
+
+		logrus.WithFields(logrus.Fields{
+			"images":      images,
+			"image_count": len(images),
+		}).Info("Executing targeted apply")
 	} else {
 		select {
 		case chanValue := <-handle.lock:
+			logrus.WithField("targeted", false).Debug("Apply handler acquired lock")
+
 			defer func() {
+				logrus.WithField("targeted", false).Debug("Apply handler releasing lock")
 				handle.lock <- chanValue
 			}()
 		default:
+			logrus.Debug("Skipped apply, another apply already in progress")
 			writeJSON(w, http.StatusTooManyRequests, map[string]any{
 				"error":       "another apply is already running",
 				"api_version": "v1",
@@ -88,11 +127,29 @@ func (handle *Handler) Handle(w http.ResponseWriter, r *http.Request) {
 
 			return
 		}
+
+		logrus.Info("Executing full apply")
 	}
+
+	logrus.WithFields(logrus.Fields{
+		"targeted":    len(images) > 0,
+		"image_count": len(images),
+	}).Debug("Apply handler executing apply function")
 
 	startTime := time.Now()
 	metric := handle.fn(images)
 	duration := time.Since(startTime)
+
+	logrus.WithFields(logrus.Fields{
+		"targeted":     len(images) > 0,
+		"image_count":  len(images),
+		"duration_ms":  duration.Milliseconds(),
+		"duration":     duration.String(),
+		"scanned":      metric.Scanned,
+		"updated":      metric.Updated,
+		"failed":       metric.Failed,
+		"restarted":    metric.Restarted,
+	}).Info("Apply operation completed")
 
 	writeJSON(w, http.StatusOK, map[string]any{
 		"summary": map[string]any{
