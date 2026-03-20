@@ -18,6 +18,7 @@ import (
 	applyAPI "github.com/aether-robotics/aether_supervisor/pkg/api/apply"
 	checkAPI "github.com/aether-robotics/aether_supervisor/pkg/api/check"
 	downloadAPI "github.com/aether-robotics/aether_supervisor/pkg/api/download"
+	logsAPI "github.com/aether-robotics/aether_supervisor/pkg/api/logs"
 	metricsAPI "github.com/aether-robotics/aether_supervisor/pkg/api/metrics"
 	servicesAPI "github.com/aether-robotics/aether_supervisor/pkg/api/services"
 	"github.com/aether-robotics/aether_supervisor/pkg/api/update"
@@ -183,6 +184,11 @@ func SetupAndStartAPI(
 		httpAPI.RegisterFunc(servicesStartHandler.Path, servicesStartHandler.Handle)
 		httpAPI.RegisterFunc(servicesRestartHandler.Path, servicesRestartHandler.Handle)
 		httpAPI.RegisterFunc(servicesRemoveHandler.Path, servicesRemoveHandler.Handle)
+
+		logsHandler := logsAPI.New(func(ctx context.Context, target types.ServiceTarget, window actions.LogWindow) (*actions.LogsResult, error) {
+			return actions.FetchLogs(ctx, target, window)
+		})
+		httpAPI.RegisterFunc(logsHandler.Path, logsHandler.Handle)
 
 		if !unblockHTTPAPI {
 			writeStartupMessage(

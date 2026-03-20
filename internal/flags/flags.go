@@ -1207,6 +1207,12 @@ func configureLogFormat(logFormat string, noColor bool) error {
 		return fmt.Errorf("%w: %s", errInvalidLogFormat, logFormat)
 	}
 
+	// BY default display timestamp
+	logrus.SetFormatter(&logrus.TextFormatter{
+		FullTimestamp:   true,
+		TimestampFormat: "2006-01-02 15:04:05.000",
+	})
+
 	return nil
 }
 
