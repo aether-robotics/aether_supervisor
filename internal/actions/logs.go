@@ -5,11 +5,14 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/docker/docker/api/types/container"
+	dockerClient "github.com/docker/docker/client"
 	"github.com/docker/docker/pkg/stdcopy"
 	"github.com/sirupsen/logrus"
 
@@ -182,6 +185,161 @@ func parseLogDuration(s string) (time.Duration, error) {
 	}
 
 	return time.ParseDuration(s)
+}
+
+// LogLine represents a single log line emitted by a container.
+type LogLine struct {
+	Container string `json:"container"`
+	Service   string `json:"service,omitempty"`
+	Stream    string `json:"stream"` // "stdout" or "stderr"
+	Line      string `json:"line"`
+}
+
+// StreamLogs streams log lines for all containers matching target to out.
+// It always closes out before returning, whether due to completion or error.
+func StreamLogs(ctx context.Context, target types.ServiceTarget, window LogWindow, out chan<- LogLine) error {
+	if target.Name == "" {
+		close(out)
+
+		return errAppNameRequired
+	}
+
+	api, err := newDockerAPIClient()
+	if err != nil {
+		close(out)
+
+		return err
+	}
+	defer api.Close()
+
+	containers, err := listTargetContainers(ctx, api, target)
+	if err != nil {
+		close(out)
+
+		return err
+	}
+
+	sinceTimestamp := windowToTimestamp(window)
+
+	logrus.WithFields(logrus.Fields{
+		"app":        target.Name,
+		"service":    target.Service,
+		"containers": len(containers),
+		"since":      sinceTimestamp,
+	}).Info("Starting log stream")
+
+	var wg sync.WaitGroup
+
+	for _, c := range containers {
+		wg.Add(1)
+
+		go func(c container.Summary) {
+			defer wg.Done()
+			streamContainerLogs(ctx, api, c, sinceTimestamp, out)
+		}(c)
+	}
+
+	wg.Wait()
+	close(out)
+
+	return nil
+}
+
+// streamContainerLogs streams demultiplexed stdout/stderr lines from a single
+// container into out. It returns when the container stops, the context is
+// cancelled, or the client disconnects.
+func streamContainerLogs(ctx context.Context, api dockerClient.APIClient, c container.Summary, sinceTimestamp string, out chan<- LogLine) {
+	name := firstContainerName(c)
+	service := c.Labels["com.docker.compose.service"]
+
+	logrus.WithFields(logrus.Fields{
+		"container": name,
+		"service":   service,
+	}).Info("Attaching to container log stream")
+
+	rc, err := api.ContainerLogs(ctx, c.ID, container.LogsOptions{
+		ShowStdout: true,
+		ShowStderr: true,
+		Follow:     true,
+		Since:      sinceTimestamp,
+	})
+	if err != nil {
+		logrus.WithError(err).WithField("container", name).Warn("Failed to start log stream for container")
+
+		return
+	}
+
+	// streamDone lets the watcher goroutine exit cleanly when the stream ends
+	// naturally, avoiding a goroutine leak.
+	streamDone := make(chan struct{})
+	defer close(streamDone)
+	defer rc.Close()
+
+	// Close rc if ctx is cancelled so stdcopy.StdCopy unblocks immediately.
+	go func() {
+		select {
+		case <-ctx.Done():
+			rc.Close()
+		case <-streamDone:
+		}
+	}()
+
+	stdoutPR, stdoutPW := io.Pipe()
+	stderrPR, stderrPW := io.Pipe()
+
+	// Demultiplex Docker's combined stream. Exits when rc closes.
+	go func() {
+		defer stdoutPW.Close()
+		defer stderrPW.Close()
+
+		if _, err := stdcopy.StdCopy(stdoutPW, stderrPW, rc); err != nil && ctx.Err() == nil {
+			logrus.WithError(err).WithField("container", name).Debug("Log stream demux ended")
+		}
+	}()
+
+	var wg sync.WaitGroup
+
+	wg.Add(1)
+
+	go func() {
+		defer wg.Done()
+		defer stdoutPR.Close()
+		scanLines(ctx, stdoutPR, name, service, "stdout", out)
+	}()
+
+	wg.Add(1)
+
+	go func() {
+		defer wg.Done()
+		defer stderrPR.Close()
+		scanLines(ctx, stderrPR, name, service, "stderr", out)
+	}()
+
+	wg.Wait()
+}
+
+// scanLines reads r line by line, sending each non-empty line to out.
+// Returns when the reader is exhausted, the context is cancelled, or the
+// client can no longer accept lines.
+func scanLines(ctx context.Context, r io.Reader, containerName, service, stream string, out chan<- LogLine) {
+	scanner := bufio.NewScanner(r)
+
+	for scanner.Scan() {
+		if line := scanner.Text(); line != "" {
+			select {
+			case out <- LogLine{Container: containerName, Service: service, Stream: stream, Line: line}:
+			case <-ctx.Done():
+				return
+			}
+		}
+	}
+
+	if err := scanner.Err(); err != nil && ctx.Err() == nil {
+		logrus.WithError(err).WithFields(logrus.Fields{
+			"container": containerName,
+			"stream":    stream,
+		}).Debug("Log scanner ended with error")
+	}
 }
 
 // splitLines splits a multi-line string into a slice of non-empty lines.

@@ -190,6 +190,11 @@ func SetupAndStartAPI(
 		})
 		httpAPI.RegisterFunc(logsHandler.Path, logsHandler.Handle)
 
+		logsStreamHandler := logsAPI.NewStream(func(ctx context.Context, target types.ServiceTarget, window actions.LogWindow, out chan<- actions.LogLine) error {
+			return actions.StreamLogs(ctx, target, window, out)
+		})
+		httpAPI.RegisterFunc(logsStreamHandler.Path, logsStreamHandler.Handle)
+
 		if !unblockHTTPAPI {
 			writeStartupMessage(
 				command,
